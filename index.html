@@ -997,6 +997,33 @@
       transform: translateX(5px);
     }
 
+    /* Contact info on VHS image */
+    .vhs-contact-info-overlay {
+      top: 38%;
+      left: 20px;
+      transform: translateY(-50%);
+      text-align: left;
+    }
+
+    .vhs-contact-info-overlay p {
+      margin: 0 0 8px 0;
+      color: #f5f0e6;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+    }
+
+    .vhs-contact-info-overlay a {
+      color: #00D4FF;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .vhs-contact-info-overlay a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00D4FF;
+    }
+
     /* About VHS - Dark Navy/Purple style */
     .vhs-about-front {
       background: #1a1a2e;
@@ -1489,69 +1516,14 @@
     </nav>
   </main>
 
-  <!-- 3D VHS Contact Popup -->
+  <!-- VHS Contact Popup (Image-based) -->
   <div class="popup-overlay" id="popup-email">
     <button class="popup-close">&times;</button>
-    <div class="vhs-3d-container">
-      <div class="vhs-3d">
-        <!-- Front -->
-        <div class="vhs-face vhs-front">
-          <div class="vhs-header">
-            <div class="vhs-title">T-180</div>
-            <div class="vhs-star">&#10022;</div>
-          </div>
-          <div class="vhs-subtitle">Video Playback</div>
-          <div class="vhs-subtitle">And Recording</div>
-          <div class="vhs-main-text">VIDEO CASSETTE</div>
-          <div class="vhs-stripes">
-            <div class="stripe stripe-white"></div>
-            <div class="stripe stripe-red"></div>
-            <div class="stripe stripe-orange"></div>
-            <div class="stripe stripe-blue"></div>
-            <div class="stripe stripe-yellow"></div>
-          </div>
-          <div class="vhs-contact-info">
-            <strong>CONTACT</strong>
-            <a href="mailto:torstein.kolset@gmail.com">torstein.kolset@gmail.com</a>
-          </div>
-        </div>
-
-        <!-- Back -->
-        <div class="vhs-face vhs-back">
-          <div class="vhs-header">
-            <div class="vhs-star">&#10022;</div>
-          </div>
-          <div class="vhs-subtitle">High Quality</div>
-          <div class="vhs-main-text" style="color: #f4a261;">VIDEO HITS</div>
-          <div class="vhs-back-stripes">
-            <div class="stripe stripe-white"></div>
-            <div class="stripe stripe-white"></div>
-            <div class="stripe stripe-red"></div>
-            <div class="stripe stripe-orange"></div>
-            <div class="stripe stripe-blue"></div>
-            <div class="stripe stripe-yellow"></div>
-          </div>
-          <div class="vhs-nostalgia">NOSTALGIA</div>
-          <div class="vhs-big-text">80's</div>
-          <div class="vhs-big-sub">MEMORIES</div>
-        </div>
-
-        <!-- Spine -->
-        <div class="vhs-spine">
-          <span class="spine-title">T-180</span>
-          <span class="spine-label">VHS</span>
-          <span class="spine-label">HQ</span>
-          <div class="spine-stripes">
-            <div class="stripe stripe-blue"></div>
-            <div class="stripe stripe-red"></div>
-            <div class="stripe stripe-orange"></div>
-          </div>
-        </div>
-
-        <!-- Other faces -->
-        <div class="vhs-left"></div>
-        <div class="vhs-top"></div>
-        <div class="vhs-bottom"></div>
+    <div class="vhs-image-container">
+      <img src="vhs-contact.png" alt="Contact VHS" class="vhs-image">
+      <div class="vhs-image-content vhs-contact-info-overlay">
+        <p><strong>CONTACT</strong></p>
+        <a href="mailto:torstein.kolset@gmail.com">torstein.kolset@gmail.com</a>
       </div>
     </div>
   </div>
