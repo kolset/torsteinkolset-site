@@ -973,6 +973,30 @@
       animation-play-state: paused;
     }
 
+    /* Projects links on VHS image */
+    .vhs-projects-links {
+      top: 35%;
+      left: 20px;
+      transform: translateY(-50%);
+      text-align: left;
+    }
+
+    .vhs-projects-links a {
+      display: block;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 6px 0;
+      transition: all 0.2s ease;
+      text-shadow: 0 0 15px #f5f0e6, 0 0 25px #f5f0e6;
+    }
+
+    .vhs-projects-links a:hover {
+      color: #6f42c1;
+      transform: translateX(5px);
+    }
+
     /* About VHS - Dark Navy/Purple style */
     .vhs-about-front {
       background: #1a1a2e;
@@ -1532,94 +1556,15 @@
     </div>
   </div>
 
-  <!-- 3D VHS Projects Popup -->
+  <!-- VHS Projects Popup (Image-based) -->
   <div class="popup-overlay" id="popup-work">
     <button class="popup-close">&times;</button>
-    <div class="vhs-3d-container">
-      <div class="vhs-3d">
-        <!-- Front -->
-        <div class="vhs-face vhs-projects-front">
-          <div class="vhs-projects-top-bar">
-            <span class="vhs-projects-header-text">BACK IN THE</span>
-            <div class="vhs-projects-header-colors">
-              <span style="background:#d63384;"></span>
-              <span style="background:#f4a261;"></span>
-              <span style="background:#6f42c1;"></span>
-            </div>
-          </div>
-          <div class="vhs-projects-diagonal">
-            <div class="stripe" style="background: #e9c46a;"></div>
-            <div class="stripe" style="background: #f4a261;"></div>
-            <div class="stripe" style="background: #e63946;"></div>
-            <div class="stripe" style="background: #d63384;"></div>
-            <div class="stripe" style="background: #6f42c1;"></div>
-          </div>
-          <div class="vhs-projects-content">
-            <a href="https://6pmclub.com" target="_blank">› 6pm Club</a>
-            <a href="#">› Moon Lander</a>
-            <a href="https://nomadsmap.co" target="_blank">› NomadsMap</a>
-          </div>
-          <div class="vhs-projects-length">▲ 246 m</div>
-          <div class="vhs-projects-bottom">
-            <div class="vhs-projects-video">VIDEO</div>
-            <div class="vhs-projects-labels">
-              <span class="vhs-projects-label">VHS</span>
-              <span class="vhs-projects-label">HQ</span>
-              <span class="vhs-projects-label">HIGH QUALITY</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Back -->
-        <div class="vhs-face vhs-projects-back">
-          <div class="vhs-projects-back-header">
-            <span class="vhs-projects-back-title">ULTRA COLOR</span>
-            <div class="vhs-projects-back-colors">
-              <span style="background:#d63384;"></span>
-              <span style="background:#f4a261;"></span>
-              <span style="background:#e9c46a;"></span>
-              <span style="background:#6f42c1;"></span>
-            </div>
-          </div>
-          <div class="vhs-projects-back-content">
-            Building digital products and experiences. Currently working on various side projects.
-          </div>
-          <div class="vhs-projects-back-model">120-HQ</div>
-          <div class="vhs-projects-back-lines">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="vhs-projects-back-stripes">
-            <div class="stripe" style="background:#e9c46a; height:30px;"></div>
-            <div class="stripe" style="background:#f4a261; height:30px;"></div>
-            <div class="stripe" style="background:#e63946; height:30px;"></div>
-            <div class="stripe" style="background:#6f42c1; height:30px;"></div>
-          </div>
-          <div class="vhs-projects-back-bottom">
-            <div class="vhs-projects-back-rec">RECORDING TIME</div>
-            <div class="vhs-projects-back-table">
-              <div><span>SP</span><span>120 min.</span></div>
-              <div><span>LP</span><span>240 min.</span></div>
-              <div><span>EP</span><span>360 min.</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Spine -->
-        <div class="vhs-projects-spine">
-          <span class="vhs-projects-spine-title">120-HQ</span>
-          <div class="vhs-projects-spine-stripes">
-            <div class="stripe" style="background:#e9c46a;"></div>
-            <div class="stripe" style="background:#f4a261;"></div>
-            <div class="stripe" style="background:#e63946;"></div>
-            <div class="stripe" style="background:#6f42c1;"></div>
-          </div>
-          <span class="vhs-projects-spine-barcode">12345-67</span>
-        </div>
-
-        <!-- Other faces -->
-        <div class="vhs-projects-left"></div>
-        <div class="vhs-projects-top"></div>
-        <div class="vhs-projects-bottom-face"></div>
+    <div class="vhs-image-container">
+      <img src="vhs-projects.png" alt="Projects VHS" class="vhs-image">
+      <div class="vhs-image-content vhs-projects-links">
+        <a href="https://6pmclub.com" target="_blank">› 6pm Club</a>
+        <a href="#">› Moon Lander</a>
+        <a href="https://nomadsmap.co" target="_blank">› NomadsMap</a>
       </div>
     </div>
   </div>
