@@ -978,19 +978,23 @@
 
     /* Projects links on VHS image */
     .vhs-projects-links {
-      top: 35%;
+      top: 32%;
       left: 20px;
       transform: translateY(-50%);
       text-align: left;
     }
 
+    .vhs-projects-links .project-item {
+      margin-bottom: 12px;
+    }
+
     .vhs-projects-links a {
       display: block;
-      font-family: -apple-system, sans-serif;
-      font-size: 0.95rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
       color: #1a1a1a;
       text-decoration: none;
-      padding: 6px 0;
+      letter-spacing: 0.05em;
       transition: all 0.2s ease;
       text-shadow: 0 0 15px #f5f0e6, 0 0 25px #f5f0e6;
     }
@@ -998,6 +1002,14 @@
     .vhs-projects-links a:hover {
       color: #6f42c1;
       transform: translateX(5px);
+    }
+
+    .vhs-projects-links .project-desc {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.7rem;
+      color: #555;
+      margin-top: 2px;
+      letter-spacing: 0.02em;
     }
 
     /* Contact info on VHS image */
@@ -1537,9 +1549,18 @@
     <div class="vhs-image-container">
       <img src="vhs-projects.png" alt="Projects VHS" class="vhs-image">
       <div class="vhs-image-content vhs-projects-links">
-        <a href="https://6pmclub.com" target="_blank">› 6pm Club</a>
-        <a href="#">› Moon Lander</a>
-        <a href="https://nomadsmap.co" target="_blank">› NomadsMap</a>
+        <div class="project-item">
+          <a href="https://6pmclub.com" target="_blank">› 6PM CLUB</a>
+          <div class="project-desc">Evening routine community</div>
+        </div>
+        <div class="project-item">
+          <a href="#">› MOON LANDER</a>
+          <div class="project-desc">Retro arcade game</div>
+        </div>
+        <div class="project-item">
+          <a href="https://nomadsmap.co" target="_blank">› NOMADSMAP</a>
+          <div class="project-desc">Digital nomad city guide</div>
+        </div>
       </div>
     </div>
   </div>
