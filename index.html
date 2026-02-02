@@ -443,6 +443,9 @@
     .stripe-orange { background: #f4a261; }
     .stripe-blue { background: #3d405b; }
     .stripe-yellow { background: #e9c46a; }
+    .stripe-magenta { background: #d63384; }
+    .stripe-purple { background: #6f42c1; }
+    .stripe-cream { background: #f5f0e6; }
 
     .vhs-contact-info {
       margin-top: 20px;
@@ -578,6 +581,605 @@
       background: #111;
       transform: rotateY(-90deg) translateZ(15px);
       box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+    }
+
+    /* Projects VHS - Cream/Retro style */
+    .vhs-projects-front {
+      background: #f5f0e6;
+      transform: translateZ(15px);
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      border-right: 2px solid #e5e0d6;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vhs-projects-front::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background: #1a1a1a;
+    }
+
+    .vhs-projects-header {
+      position: relative;
+      z-index: 2;
+      padding-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .vhs-projects-header-text {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.65rem;
+      color: #f5f0e6;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    .vhs-projects-diagonal {
+      position: absolute;
+      top: 30px;
+      left: -50px;
+      right: -50px;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      transform: rotate(-25deg);
+      transform-origin: top right;
+    }
+
+    .vhs-projects-diagonal .stripe {
+      height: 30px;
+      flex-shrink: 0;
+    }
+
+    .vhs-projects-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: #1a1a1a;
+      padding: 10px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .vhs-projects-video {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: #f5f0e6;
+      letter-spacing: 0.1em;
+    }
+
+    .vhs-projects-labels {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .vhs-projects-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.5rem;
+      color: #1a1a1a;
+      background: #f5f0e6;
+      padding: 2px 5px;
+      border: 1px solid #1a1a1a;
+    }
+
+    .vhs-projects-length {
+      position: absolute;
+      bottom: 90px;
+      left: 15px;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.7rem;
+      color: #1a1a1a;
+    }
+
+    .vhs-projects-content {
+      position: absolute;
+      bottom: 100px;
+      left: 20px;
+      right: 20px;
+      z-index: 5;
+    }
+
+    .vhs-projects-content a {
+      display: block;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.8rem;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 4px 0;
+      transition: all 0.2s ease;
+    }
+
+    .vhs-projects-content a:hover {
+      color: #6f42c1;
+    }
+
+    /* Projects Back */
+    .vhs-projects-back {
+      background: #f5f0e6;
+      transform: rotateY(180deg) translateZ(15px);
+      border-left: 2px solid #e5e0d6;
+      overflow: hidden;
+    }
+
+    .vhs-projects-back-header {
+      background: #1a1a1a;
+      padding: 8px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .vhs-projects-back-title {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.6rem;
+      color: #f5f0e6;
+      letter-spacing: 0.2em;
+    }
+
+    .vhs-projects-back-colors {
+      display: flex;
+      gap: 2px;
+    }
+
+    .vhs-projects-back-colors span {
+      width: 12px;
+      height: 12px;
+    }
+
+    .vhs-projects-back-content {
+      padding: 15px;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.55rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .vhs-projects-back-model {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #1a1a1a;
+      margin: 10px 15px;
+    }
+
+    .vhs-projects-back-lines {
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .vhs-projects-back-lines span {
+      height: 2px;
+      background: #1a1a1a;
+    }
+
+    .vhs-projects-back-lines span:nth-child(2) { width: 80%; }
+    .vhs-projects-back-lines span:nth-child(3) { width: 60%; }
+
+    .vhs-projects-back-stripes {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vhs-projects-back-stripes .stripe {
+      height: 25px;
+    }
+
+    .vhs-projects-back-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: #1a1a1a;
+      padding: 10px 15px;
+    }
+
+    .vhs-projects-back-rec {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.5rem;
+      color: #c9a227;
+      letter-spacing: 0.1em;
+      margin-bottom: 5px;
+    }
+
+    .vhs-projects-back-table {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.5rem;
+      color: #f5f0e6;
+    }
+
+    .vhs-projects-back-table div {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #333;
+      padding: 2px 0;
+    }
+
+    /* Projects Spine */
+    .vhs-projects-spine {
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      background: #e8e3d9;
+      transform: rotateY(90deg) translateZ(265px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 3px;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.4);
+    }
+
+    .vhs-projects-spine-title {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: #1a1a1a;
+      letter-spacing: 0.1em;
+      margin-bottom: auto;
+    }
+
+    .vhs-projects-spine-stripes {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .vhs-projects-spine-stripes .stripe {
+      height: 15px;
+    }
+
+    .vhs-projects-spine-barcode {
+      writing-mode: vertical-rl;
+      font-family: monospace;
+      font-size: 0.4rem;
+      color: #1a1a1a;
+      margin-top: 10px;
+    }
+
+    /* Projects Left/Top/Bottom */
+    .vhs-projects-left {
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      background: #d4cfc5;
+      transform: rotateY(-90deg) translateZ(15px);
+      box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+    }
+
+    .vhs-projects-top {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #e8e3d9;
+      transform: rotateX(90deg) translateZ(15px);
+    }
+
+    .vhs-projects-bottom-face {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #1a1a1a;
+      transform: rotateX(-90deg) translateZ(385px);
+    }
+
+    /* About VHS - Dark Navy/Purple style */
+    .vhs-about-front {
+      background: #1a1a2e;
+      transform: translateZ(15px);
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      border-right: 2px solid #12121f;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vhs-about-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .vhs-about-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: #e9c46a;
+      font-style: italic;
+    }
+
+    .vhs-about-hq {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: #f5f0e6;
+      border: 2px solid #f5f0e6;
+      padding: 2px 8px;
+    }
+
+    .vhs-about-color-bar {
+      display: flex;
+      margin-bottom: 5px;
+    }
+
+    .vhs-about-color-bar span {
+      width: 25px;
+      height: 18px;
+    }
+
+    .vhs-about-vhs-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      color: #f5f0e6;
+      margin-bottom: auto;
+    }
+
+    .vhs-about-content {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      font-family: -apple-system, sans-serif;
+      font-size: 0.8rem;
+      color: #f5f0e6;
+      line-height: 1.8;
+    }
+
+    .vhs-about-content p {
+      margin: 0;
+    }
+
+    .vhs-about-made {
+      position: absolute;
+      bottom: 100px;
+      left: 20px;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.6rem;
+      color: #666;
+      letter-spacing: 0.15em;
+    }
+
+    .vhs-about-bottom-stripes {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vhs-about-bottom-stripes div {
+      height: 18px;
+    }
+
+    .vhs-about-corner {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #2d2d44;
+    }
+
+    .vhs-about-corner-bl {
+      bottom: 72px;
+      left: 0;
+      clip-path: polygon(0 100%, 100% 100%, 0 0);
+    }
+
+    .vhs-about-corner-br {
+      bottom: 72px;
+      right: 0;
+      clip-path: polygon(100% 100%, 0 100%, 100% 0);
+    }
+
+    /* About Back */
+    .vhs-about-back {
+      background: #1a1a2e;
+      transform: rotateY(180deg) translateZ(15px);
+      border-left: 2px solid #12121f;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vhs-about-back-header {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.7rem;
+      color: #f5f0e6;
+      margin-bottom: 5px;
+    }
+
+    .vhs-about-back-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: #f5f0e6;
+      line-height: 1;
+    }
+
+    .vhs-about-back-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: #f5f0e6;
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+    }
+
+    .vhs-about-back-colors {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    .vhs-about-back-colors span {
+      width: 30px;
+      height: 25px;
+    }
+
+    .vhs-about-back-model {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    .vhs-about-back-model span:first-child {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #e9c46a;
+      border: 2px solid #e9c46a;
+      padding: 2px 10px;
+    }
+
+    .vhs-about-back-arrow {
+      color: #4ecdc4;
+      font-size: 1.5rem;
+    }
+
+    .vhs-about-back-grade {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.55rem;
+      color: #888;
+      letter-spacing: 0.1em;
+      margin-bottom: auto;
+    }
+
+    .vhs-about-back-info {
+      position: absolute;
+      bottom: 100px;
+      left: 20px;
+      display: flex;
+      align-items: flex-end;
+      gap: 15px;
+    }
+
+    .vhs-about-back-hvc {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.5rem;
+      color: #e9c46a;
+      line-height: 1.3;
+    }
+
+    .vhs-about-back-vhs {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: #1a1a2e;
+      background: #f5f0e6;
+      padding: 2px 8px;
+    }
+
+    .vhs-about-back-stripes {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 100px;
+      display: flex;
+    }
+
+    .vhs-about-back-stripes div {
+      flex: 1;
+    }
+
+    .vhs-about-back-side-stripes {
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .vhs-about-back-side-stripes span {
+      width: 8px;
+      height: 20px;
+    }
+
+    /* About Spine */
+    .vhs-about-spine {
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      background: #1a1a2e;
+      transform: rotateY(90deg) translateZ(265px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 3px;
+      box-shadow: -2px 0 8px rgba(0,0,0,0.4);
+    }
+
+    .vhs-about-spine-vhs {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.6rem;
+      color: #1a1a2e;
+      background: #4ecdc4;
+      padding: 3px 5px;
+      margin-bottom: 10px;
+    }
+
+    .vhs-about-spine-title {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: #e9c46a;
+      letter-spacing: 0.1em;
+      margin-bottom: auto;
+    }
+
+    .vhs-about-spine-hq {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.5rem;
+      color: #e9c46a;
+      border: 1px solid #e9c46a;
+      padding: 2px 4px;
+      margin-bottom: 10px;
+    }
+
+    .vhs-about-spine-stripes {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .vhs-about-spine-stripes span {
+      height: 15px;
+    }
+
+    /* About Left/Top/Bottom */
+    .vhs-about-left {
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      background: #12121f;
+      transform: rotateY(-90deg) translateZ(15px);
+      box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+    }
+
+    .vhs-about-top {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #1a1a2e;
+      transform: rotateX(90deg) translateZ(15px);
+    }
+
+    .vhs-about-bottom-face {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #12121f;
+      transform: rotateX(-90deg) translateZ(385px);
     }
 
     /* Top */
@@ -749,8 +1351,8 @@
         <span class="vhs-text">Contact</span>
       </button>
       <button class="vhs" data-popup="work">
-        <img src="vhs-2.png" alt="Passion VHS" class="vhs-img">
-        <span class="vhs-text">Passion</span>
+        <img src="vhs-2.png" alt="Projects VHS" class="vhs-img">
+        <span class="vhs-text">Projects</span>
       </button>
       <button class="vhs" data-popup="about">
         <img src="vhs-3.png" alt="About VHS" class="vhs-img">
@@ -826,24 +1428,180 @@
     </div>
   </div>
 
-  <!-- Other Popups -->
+  <!-- 3D VHS Projects Popup -->
   <div class="popup-overlay" id="popup-work">
     <button class="popup-close">&times;</button>
-    <div class="popup">
-      <h2 class="popup-title">Passion</h2>
-      <div class="popup-content">
-        <p>Projects and passions coming soon...</p>
+    <div class="vhs-3d-container">
+      <div class="vhs-3d">
+        <!-- Front -->
+        <div class="vhs-face vhs-projects-front">
+          <div class="vhs-projects-header">
+            <span class="vhs-projects-header-text">BACK IN THE</span>
+          </div>
+          <div class="vhs-projects-diagonal">
+            <div class="stripe" style="background: #f5f0e6;"></div>
+            <div class="stripe" style="background: #f5f0e6;"></div>
+            <div class="stripe" style="background: #e9c46a;"></div>
+            <div class="stripe" style="background: #f4a261;"></div>
+            <div class="stripe" style="background: #e63946;"></div>
+            <div class="stripe" style="background: #d63384;"></div>
+            <div class="stripe" style="background: #6f42c1;"></div>
+          </div>
+          <div class="vhs-projects-content">
+            <a href="https://6pmclub.com" target="_blank">› 6pm Club</a>
+            <a href="#">› Moon Lander</a>
+            <a href="https://nomadsmap.co" target="_blank">› NomadsMap</a>
+          </div>
+          <div class="vhs-projects-length">▲ 246 m</div>
+          <div class="vhs-projects-bottom">
+            <div class="vhs-projects-video">VIDEO</div>
+            <div class="vhs-projects-labels">
+              <span class="vhs-projects-label">VHS</span>
+              <span class="vhs-projects-label">HQ</span>
+              <span class="vhs-projects-label" style="font-size:0.4rem;">HIGH QUALITY</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div class="vhs-face vhs-projects-back">
+          <div class="vhs-projects-back-header">
+            <span class="vhs-projects-back-title">ULTRA COLOR</span>
+            <div class="vhs-projects-back-colors">
+              <span style="background:#d63384;"></span>
+              <span style="background:#f4a261;"></span>
+              <span style="background:#e9c46a;"></span>
+              <span style="background:#6f42c1;"></span>
+            </div>
+          </div>
+          <div class="vhs-projects-back-content">
+            Building digital products and experiences. Currently working on various side projects.
+          </div>
+          <div class="vhs-projects-back-model">120-HQ</div>
+          <div class="vhs-projects-back-lines">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="vhs-projects-back-stripes">
+            <div class="stripe" style="background:#e9c46a; height:30px;"></div>
+            <div class="stripe" style="background:#f4a261; height:30px;"></div>
+            <div class="stripe" style="background:#e63946; height:30px;"></div>
+            <div class="stripe" style="background:#6f42c1; height:30px;"></div>
+          </div>
+          <div class="vhs-projects-back-bottom">
+            <div class="vhs-projects-back-rec">RECORDING TIME</div>
+            <div class="vhs-projects-back-table">
+              <div><span>SP</span><span>120 min.</span></div>
+              <div><span>LP</span><span>240 min.</span></div>
+              <div><span>EP</span><span>360 min.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spine -->
+        <div class="vhs-projects-spine">
+          <span class="vhs-projects-spine-title">120-HQ</span>
+          <div class="vhs-projects-spine-stripes">
+            <div class="stripe" style="background:#e9c46a;"></div>
+            <div class="stripe" style="background:#f4a261;"></div>
+            <div class="stripe" style="background:#e63946;"></div>
+            <div class="stripe" style="background:#6f42c1;"></div>
+          </div>
+          <span class="vhs-projects-spine-barcode">12345-67</span>
+        </div>
+
+        <!-- Other faces -->
+        <div class="vhs-projects-left"></div>
+        <div class="vhs-projects-top"></div>
+        <div class="vhs-projects-bottom-face"></div>
       </div>
     </div>
   </div>
 
+  <!-- 3D VHS About Popup -->
   <div class="popup-overlay" id="popup-about">
     <button class="popup-close">&times;</button>
-    <div class="popup">
-      <h2 class="popup-title">About</h2>
-      <div class="popup-content">
-        <p>Developer, Creator, Explorer.</p>
-        <p>More details coming soon...</p>
+    <div class="vhs-3d-container">
+      <div class="vhs-3d">
+        <!-- Front -->
+        <div class="vhs-face vhs-about-front">
+          <div class="vhs-about-header">
+            <span class="vhs-about-title">T-152</span>
+            <span class="vhs-about-hq">H|Q</span>
+          </div>
+          <div class="vhs-about-color-bar">
+            <span style="background:#f5f0e6;"></span>
+            <span style="background:#f4a261;"></span>
+            <span style="background:#e07a5f;"></span>
+            <span style="background:#6d4c41;"></span>
+          </div>
+          <div class="vhs-about-vhs-label">VHS</div>
+          <div class="vhs-about-content">
+            <p><strong>TJ Kolset</strong></p>
+            <p>Developer & Creator</p>
+            <p>Based in Oslo, Norway</p>
+          </div>
+          <div class="vhs-about-made">MADE IN JAPAN</div>
+          <div class="vhs-about-bottom-stripes">
+            <div style="background:#f5f0e6;"></div>
+            <div style="background:#f4a261;"></div>
+            <div style="background:#e07a5f;"></div>
+            <div style="background:#6d4c41;"></div>
+          </div>
+          <div class="vhs-about-corner vhs-about-corner-bl"></div>
+          <div class="vhs-about-corner vhs-about-corner-br"></div>
+        </div>
+
+        <!-- Back -->
+        <div class="vhs-face vhs-about-back">
+          <div class="vhs-about-back-header">Back in the</div>
+          <div class="vhs-about-back-big">90'S</div>
+          <div class="vhs-about-back-sub">MEMORIES</div>
+          <div class="vhs-about-back-colors">
+            <span style="background:#f5f0e6;"></span>
+            <span style="background:#f4a261;"></span>
+            <span style="background:#e07a5f;"></span>
+            <span style="background:#6d4c41;"></span>
+          </div>
+          <div class="vhs-about-back-model">
+            <span>T-152</span>
+            <span class="vhs-about-back-arrow">◄</span>
+          </div>
+          <div class="vhs-about-back-grade">HIGH GRADE COLORS</div>
+          <div class="vhs-about-back-info">
+            <div class="vhs-about-back-hvc">HIGH<br>VIDEO<br>CASSETTE</div>
+            <div class="vhs-about-back-vhs">VHS</div>
+          </div>
+          <div class="vhs-about-back-stripes">
+            <div style="background:#f5f0e6;"></div>
+            <div style="background:#f5f0e6;"></div>
+            <div style="background:#f4a261;"></div>
+            <div style="background:#e07a5f;"></div>
+            <div style="background:#6d4c41;"></div>
+          </div>
+          <div class="vhs-about-back-side-stripes">
+            <span style="background:#6d4c41;"></span>
+            <span style="background:#e07a5f;"></span>
+            <span style="background:#f4a261;"></span>
+            <span style="background:#f5f0e6;"></span>
+          </div>
+        </div>
+
+        <!-- Spine -->
+        <div class="vhs-about-spine">
+          <span class="vhs-about-spine-vhs">VHS</span>
+          <span class="vhs-about-spine-title">T-152</span>
+          <span class="vhs-about-spine-hq">HQ</span>
+          <div class="vhs-about-spine-stripes">
+            <span style="background:#6d4c41;"></span>
+            <span style="background:#e07a5f;"></span>
+            <span style="background:#f4a261;"></span>
+          </div>
+        </div>
+
+        <!-- Other faces -->
+        <div class="vhs-about-left"></div>
+        <div class="vhs-about-top"></div>
+        <div class="vhs-about-bottom-face"></div>
       </div>
     </div>
   </div>
