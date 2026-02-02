@@ -892,6 +892,87 @@
       border-radius: 0 0 4px 4px;
     }
 
+    /* VHS Image-based popup */
+    .vhs-image-container {
+      position: relative;
+      max-width: 320px;
+      animation: vhs-image-enter 0.6s ease-out forwards;
+    }
+
+    .popup-overlay.active .vhs-image-container {
+      animation: vhs-image-enter 0.6s ease-out forwards, vhs-image-float 4s ease-in-out 0.6s infinite;
+    }
+
+    @keyframes vhs-image-enter {
+      0% {
+        transform: scale(0.5) rotateY(-30deg);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1) rotateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes vhs-image-float {
+      0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+      }
+      50% {
+        transform: translateY(-10px) rotate(1deg);
+      }
+    }
+
+    .vhs-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.3);
+      filter: saturate(1.1);
+    }
+
+    .vhs-image-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      border-radius: 6px;
+      opacity: 0.3;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    .vhs-image-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: -apple-system, sans-serif;
+      color: #f5f0e6;
+      font-size: 1rem;
+      line-height: 1.8;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .vhs-image-content p {
+      margin: 0;
+    }
+
+    .vhs-image-content strong {
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .vhs-image-container:hover {
+      animation-play-state: paused;
+    }
+
     /* About VHS - Dark Navy/Purple style */
     .vhs-about-front {
       background: #1a1a2e;
@@ -1543,91 +1624,15 @@
     </div>
   </div>
 
-  <!-- 3D VHS About Popup -->
+  <!-- VHS About Popup (Image-based) -->
   <div class="popup-overlay" id="popup-about">
     <button class="popup-close">&times;</button>
-    <div class="vhs-3d-container">
-      <div class="vhs-3d">
-        <!-- Front -->
-        <div class="vhs-face vhs-about-front">
-          <div class="vhs-about-header">
-            <span class="vhs-about-title">T-152</span>
-            <span class="vhs-about-hq">H|Q</span>
-          </div>
-          <div class="vhs-about-color-bar">
-            <span style="background:#f5f0e6;"></span>
-            <span style="background:#f4a261;"></span>
-            <span style="background:#e07a5f;"></span>
-            <span style="background:#6d4c41;"></span>
-          </div>
-          <div class="vhs-about-vhs-label">VHS</div>
-          <div class="vhs-about-content">
-            <p><strong>TJ Kolset</strong></p>
-            <p>Developer & Creator</p>
-            <p>Based in Oslo, Norway</p>
-          </div>
-          <div class="vhs-about-made">MADE IN JAPAN</div>
-          <div class="vhs-about-bottom-stripes">
-            <div style="background:#f5f0e6;"></div>
-            <div style="background:#f4a261;"></div>
-            <div style="background:#e07a5f;"></div>
-            <div style="background:#6d4c41;"></div>
-          </div>
-          <div class="vhs-about-corner vhs-about-corner-bl"></div>
-          <div class="vhs-about-corner vhs-about-corner-br"></div>
-        </div>
-
-        <!-- Back -->
-        <div class="vhs-face vhs-about-back">
-          <div class="vhs-about-back-header">Back in the</div>
-          <div class="vhs-about-back-big">90'S</div>
-          <div class="vhs-about-back-sub">MEMORIES</div>
-          <div class="vhs-about-back-colors">
-            <span style="background:#f5f0e6;"></span>
-            <span style="background:#f4a261;"></span>
-            <span style="background:#e07a5f;"></span>
-            <span style="background:#6d4c41;"></span>
-          </div>
-          <div class="vhs-about-back-model">
-            <span>T-152</span>
-            <span class="vhs-about-back-arrow">◄</span>
-          </div>
-          <div class="vhs-about-back-grade">HIGH GRADE COLORS</div>
-          <div class="vhs-about-back-info">
-            <div class="vhs-about-back-hvc">HIGH<br>VIDEO<br>CASSETTE</div>
-            <div class="vhs-about-back-vhs">VHS</div>
-          </div>
-          <div class="vhs-about-back-stripes">
-            <div style="background:#f5f0e6;"></div>
-            <div style="background:#f5f0e6;"></div>
-            <div style="background:#f4a261;"></div>
-            <div style="background:#e07a5f;"></div>
-            <div style="background:#6d4c41;"></div>
-          </div>
-          <div class="vhs-about-back-side-stripes">
-            <span style="background:#6d4c41;"></span>
-            <span style="background:#e07a5f;"></span>
-            <span style="background:#f4a261;"></span>
-            <span style="background:#f5f0e6;"></span>
-          </div>
-        </div>
-
-        <!-- Spine -->
-        <div class="vhs-about-spine">
-          <span class="vhs-about-spine-vhs">VHS</span>
-          <span class="vhs-about-spine-title">T-152</span>
-          <span class="vhs-about-spine-hq">HQ</span>
-          <div class="vhs-about-spine-stripes">
-            <span style="background:#6d4c41;"></span>
-            <span style="background:#e07a5f;"></span>
-            <span style="background:#f4a261;"></span>
-          </div>
-        </div>
-
-        <!-- Other faces -->
-        <div class="vhs-about-left"></div>
-        <div class="vhs-about-top"></div>
-        <div class="vhs-about-bottom-face"></div>
+    <div class="vhs-image-container">
+      <img src="vhs-about.png" alt="About VHS" class="vhs-image">
+      <div class="vhs-image-content">
+        <p><strong>TJ Kolset</strong></p>
+        <p>Developer & Creator</p>
+        <p>Based in Oslo, Norway</p>
       </div>
     </div>
   </div>
