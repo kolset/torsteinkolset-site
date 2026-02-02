@@ -221,9 +221,12 @@
       z-index: 2;
     }
 
-    .vhs:nth-child(1) .vhs-text { color: #c41e3a; }
+    /* About - teal text */
+    .vhs:nth-child(1) .vhs-text { color: #4ecdc4; left: -125%; }
+    /* Projects - purple text */
     .vhs:nth-child(2) .vhs-text { color: #4a1a6b; left: -140%; }
-    .vhs:nth-child(3) .vhs-text { color: #4ecdc4; left: -125%; }
+    /* Contact - red text */
+    .vhs:nth-child(3) .vhs-text { color: #c41e3a; }
 
     .vhs:hover {
       transform: translateX(-10px);
@@ -1501,17 +1504,17 @@
     </div>
 
     <nav class="links">
-      <button class="vhs" data-popup="email">
-        <img src="vhs-1.png" alt="Contact VHS" class="vhs-img">
-        <span class="vhs-text">Contact</span>
+      <button class="vhs" data-popup="about">
+        <img src="vhs-3.png" alt="About VHS" class="vhs-img">
+        <span class="vhs-text">About</span>
       </button>
       <button class="vhs" data-popup="work">
         <img src="vhs-2.png" alt="Projects VHS" class="vhs-img">
         <span class="vhs-text">Projects</span>
       </button>
-      <button class="vhs" data-popup="about">
-        <img src="vhs-3.png" alt="About VHS" class="vhs-img">
-        <span class="vhs-text">About</span>
+      <button class="vhs" data-popup="email">
+        <img src="vhs-1.png" alt="Contact VHS" class="vhs-img">
+        <span class="vhs-text">Contact</span>
       </button>
     </nav>
   </main>
