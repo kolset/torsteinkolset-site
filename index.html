@@ -15,7 +15,7 @@
   <!-- Google Fonts - Orbitron for 80s tech feel -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -177,15 +177,6 @@
       box-shadow: 0 0 10px #FF10F0;
     }
 
-    .tagline {
-      font-size: 1.1rem;
-      color: #aaa;
-      margin-bottom: 2.5rem;
-      max-width: 400px;
-      margin-left: 0;
-      margin-right: auto;
-    }
-
     /* Links section - VHS stacked horizontally */
     .links {
       display: flex;
@@ -208,7 +199,6 @@
       align-items: center;
     }
 
-    /* VHS image - rotated to horizontal */
     .vhs-img {
       height: 300px;
       width: auto;
@@ -217,7 +207,6 @@
       filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.3));
     }
 
-    /* Text label on VHS */
     .vhs-text {
       position: absolute;
       top: 50%;
@@ -232,22 +221,9 @@
       z-index: 2;
     }
 
-    /* VHS 1 - Cream/Red - dark red text */
-    .vhs:nth-child(1) .vhs-text {
-      color: #c41e3a;
-    }
-
-    /* VHS 2 - Cream/Rainbow - dark purple text */
-    .vhs:nth-child(2) .vhs-text {
-      color: #4a1a6b;
-      left: -140%;
-    }
-
-    /* VHS 3 - Dark/Teal - teal text */
-    .vhs:nth-child(3) .vhs-text {
-      color: #4ecdc4;
-      left: -125%;
-    }
+    .vhs:nth-child(1) .vhs-text { color: #c41e3a; }
+    .vhs:nth-child(2) .vhs-text { color: #4a1a6b; left: -140%; }
+    .vhs:nth-child(3) .vhs-text { color: #4ecdc4; left: -125%; }
 
     .vhs:hover {
       transform: translateX(-10px);
@@ -258,11 +234,7 @@
       filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5));
     }
 
-    .vhs:active {
-      transform: translateX(-5px);
-    }
-
-    /* VHS tracking line (occasional) */
+    /* VHS tracking line */
     .tracking-line {
       position: fixed;
       left: 0;
@@ -288,43 +260,22 @@
       100% { top: 100vh; opacity: 0; }
     }
 
-    /* Reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      body::before,
-      .title,
-      .tracking-line,
-      .popup-overlay.active .popup {
-        animation: none;
-      }
-
-      .vhs:hover {
-        transform: none;
-      }
-
-      .title {
-        text-shadow:
-          0 0 5px #fff,
-          0 0 10px #fff,
-          0 0 20px #FF10F0,
-          0 0 30px #FF10F0;
-      }
-    }
-
-    /* Popup styles */
+    /* 3D VHS Popup */
     .popup-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: transparent;
+      background: rgba(0, 0, 0, 0.85);
       z-index: 1500;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.3s ease;
+      perspective: 1500px;
     }
 
     .popup-overlay.active {
@@ -332,6 +283,293 @@
       visibility: visible;
     }
 
+    .popup-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .popup-close:hover {
+      color: #FF10F0;
+      text-shadow: 0 0 10px #FF10F0;
+    }
+
+    /* 3D VHS Box */
+    .vhs-3d-container {
+      width: 280px;
+      height: 400px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: vhs-float 4s ease-in-out infinite;
+    }
+
+    .popup-overlay.active .vhs-3d-container {
+      animation: vhs-enter 0.8s ease-out forwards, vhs-float 4s ease-in-out 0.8s infinite;
+    }
+
+    @keyframes vhs-enter {
+      0% {
+        transform: rotateY(-90deg) rotateX(20deg) scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: rotateY(-20deg) rotateX(5deg) scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes vhs-float {
+      0%, 100% {
+        transform: rotateY(-20deg) rotateX(5deg) translateY(0);
+      }
+      50% {
+        transform: rotateY(-15deg) rotateX(3deg) translateY(-10px);
+      }
+    }
+
+    .vhs-3d-container:hover {
+      animation-play-state: paused;
+    }
+
+    .vhs-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+
+    .vhs-3d-container:hover .vhs-3d {
+      transform: rotateY(15deg);
+    }
+
+    .vhs-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    /* Front face */
+    .vhs-front {
+      background: #1a1a1a;
+      transform: translateZ(15px);
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .vhs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .vhs-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: #e63946;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    .vhs-star {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #666;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f5f0e6;
+      font-size: 18px;
+    }
+
+    .vhs-subtitle {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.7rem;
+      color: #888;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .vhs-main-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: #e63946;
+      letter-spacing: 0.05em;
+      margin-top: auto;
+      margin-bottom: 15px;
+    }
+
+    .vhs-stripes {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stripe {
+      height: 18px;
+    }
+
+    .stripe-white { background: #f5f0e6; }
+    .stripe-red { background: #e63946; }
+    .stripe-orange { background: #f4a261; }
+    .stripe-blue { background: #3d405b; }
+    .stripe-yellow { background: #e9c46a; }
+
+    .vhs-contact-info {
+      margin-top: 20px;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.9rem;
+      color: #f5f0e6;
+    }
+
+    .vhs-contact-info a {
+      color: #00D4FF;
+      text-decoration: none;
+      display: block;
+      margin-top: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .vhs-contact-info a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #00D4FF;
+    }
+
+    /* Back face */
+    .vhs-back {
+      background: #1a1a1a;
+      transform: rotateY(180deg) translateZ(15px);
+    }
+
+    .vhs-back .vhs-header {
+      justify-content: flex-end;
+    }
+
+    .vhs-back-stripes {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      height: 120px;
+      margin: 20px 0;
+    }
+
+    .vhs-back-stripes .stripe {
+      height: 100%;
+    }
+
+    .vhs-nostalgia {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: -apple-system, sans-serif;
+      font-size: 0.8rem;
+      color: #f4a261;
+      letter-spacing: 0.2em;
+    }
+
+    .vhs-big-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: #e9c46a;
+      line-height: 1;
+      margin-top: auto;
+    }
+
+    .vhs-big-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: #f5f0e6;
+      letter-spacing: 0.1em;
+    }
+
+    /* Spine */
+    .vhs-spine {
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      background: #f5f0e6;
+      transform: rotateY(90deg) translateZ(265px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 5px;
+      box-shadow: inset -2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .spine-title {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: -apple-system, sans-serif;
+      font-size: 0.9rem;
+      color: #1a1a1a;
+      letter-spacing: 0.1em;
+      margin-bottom: auto;
+    }
+
+    .spine-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.6rem;
+      border: 1px solid #e63946;
+      padding: 2px 4px;
+      color: #e63946;
+      margin-bottom: 8px;
+    }
+
+    .spine-stripes {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .spine-stripes .stripe {
+      height: 10px;
+    }
+
+    /* Left side */
+    .vhs-left {
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      background: #151515;
+      transform: rotateY(-90deg) translateZ(15px);
+      box-shadow: inset 2px 0 5px rgba(0,0,0,0.3);
+    }
+
+    /* Top */
+    .vhs-top {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #1a1a1a;
+      transform: rotateX(90deg) translateZ(15px);
+    }
+
+    /* Bottom */
+    .vhs-bottom {
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      background: #151515;
+      transform: rotateX(-90deg) translateZ(385px);
+    }
+
+    /* Other popups (non-3D) */
     .popup {
       background: rgba(10, 10, 10, 0.75);
       backdrop-filter: blur(8px);
@@ -345,7 +583,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* Scanlines on popup */
     .popup::before {
       content: '';
       position: absolute;
@@ -363,7 +600,6 @@
       );
     }
 
-    /* Neon border glow */
     .popup::after {
       content: '';
       position: absolute;
@@ -377,43 +613,6 @@
 
     .popup-overlay.active .popup {
       transform: translateY(0);
-      animation: glitch-in 0.3s ease-out;
-    }
-
-    @keyframes glitch-in {
-      0% {
-        transform: translateY(30px) skewX(-2deg);
-        opacity: 0;
-      }
-      30% {
-        transform: translateY(-5px) skewX(1deg);
-      }
-      50% {
-        transform: translateY(5px) skewX(-0.5deg);
-      }
-      100% {
-        transform: translateY(0) skewX(0);
-        opacity: 1;
-      }
-    }
-
-    .popup-close {
-      position: absolute;
-      top: 0.75rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      color: #555;
-      font-size: 1.25rem;
-      cursor: pointer;
-      font-family: 'Orbitron', sans-serif;
-      transition: all 0.3s ease;
-      z-index: 1;
-    }
-
-    .popup-close:hover {
-      color: #FF10F0;
-      text-shadow: 0 0 10px #FF10F0;
     }
 
     .popup-title {
@@ -462,6 +661,7 @@
       .links {
         align-self: flex-start;
         padding: 8px;
+        margin-right: 20px;
       }
 
       .vhs-img {
@@ -472,16 +672,28 @@
         height: 32px;
       }
 
-      .links {
-        margin-right: 20px;
+      .vhs-3d-container {
+        width: 200px;
+        height: 290px;
+        transform: scale(0.85);
       }
 
-      .title {
-        text-shadow:
-          0 0 5px #fff,
-          0 0 10px #fff,
-          0 0 15px #FF10F0,
-          0 0 20px #FF10F0;
+      .vhs-title {
+        font-size: 2rem;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      body::before,
+      .title,
+      .tracking-line,
+      .vhs-3d-container {
+        animation: none;
+      }
+
+      .vhs:hover {
+        transform: none;
       }
     }
   </style>
@@ -518,21 +730,77 @@
     </nav>
   </main>
 
-  <!-- Popups -->
+  <!-- 3D VHS Contact Popup -->
   <div class="popup-overlay" id="popup-email">
-    <div class="popup">
-      <button class="popup-close">&times;</button>
-      <h2 class="popup-title">Contact</h2>
-      <div class="popup-content">
-        <p>Get in touch:</p>
-        <p><a href="mailto:torstein.kolset@gmail.com">torstein.kolset@gmail.com</a></p>
+    <button class="popup-close">&times;</button>
+    <div class="vhs-3d-container">
+      <div class="vhs-3d">
+        <!-- Front -->
+        <div class="vhs-face vhs-front">
+          <div class="vhs-header">
+            <div class="vhs-title">T-180</div>
+            <div class="vhs-star">&#10022;</div>
+          </div>
+          <div class="vhs-subtitle">Video Playback</div>
+          <div class="vhs-subtitle">And Recording</div>
+          <div class="vhs-main-text">VIDEO CASSETTE</div>
+          <div class="vhs-stripes">
+            <div class="stripe stripe-white"></div>
+            <div class="stripe stripe-red"></div>
+            <div class="stripe stripe-orange"></div>
+            <div class="stripe stripe-blue"></div>
+            <div class="stripe stripe-yellow"></div>
+          </div>
+          <div class="vhs-contact-info">
+            <strong>CONTACT</strong>
+            <a href="mailto:torstein.kolset@gmail.com">torstein.kolset@gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Back -->
+        <div class="vhs-face vhs-back">
+          <div class="vhs-header">
+            <div class="vhs-star">&#10022;</div>
+          </div>
+          <div class="vhs-subtitle">High Quality</div>
+          <div class="vhs-main-text" style="color: #f4a261;">VIDEO HITS</div>
+          <div class="vhs-back-stripes">
+            <div class="stripe stripe-white"></div>
+            <div class="stripe stripe-white"></div>
+            <div class="stripe stripe-red"></div>
+            <div class="stripe stripe-orange"></div>
+            <div class="stripe stripe-blue"></div>
+            <div class="stripe stripe-yellow"></div>
+          </div>
+          <div class="vhs-nostalgia">NOSTALGIA</div>
+          <div class="vhs-big-text">80's</div>
+          <div class="vhs-big-sub">MEMORIES</div>
+        </div>
+
+        <!-- Spine -->
+        <div class="vhs-spine">
+          <span class="spine-title">T-180</span>
+          <span class="spine-label">VHS</span>
+          <span class="spine-label">HQ</span>
+          <div class="spine-stripes">
+            <div class="stripe stripe-blue"></div>
+            <div class="stripe stripe-red"></div>
+            <div class="stripe stripe-orange"></div>
+          </div>
+        </div>
+
+        <!-- Other faces -->
+        <div class="vhs-left"></div>
+        <div class="vhs-top"></div>
+        <div class="vhs-bottom"></div>
       </div>
     </div>
   </div>
 
+  <!-- Other Popups -->
   <div class="popup-overlay" id="popup-work">
+    <button class="popup-close">&times;</button>
     <div class="popup">
-      <button class="popup-close">&times;</button>
       <h2 class="popup-title">Passion</h2>
       <div class="popup-content">
         <p>Projects and passions coming soon...</p>
@@ -541,8 +809,8 @@
   </div>
 
   <div class="popup-overlay" id="popup-about">
+    <button class="popup-close">&times;</button>
     <div class="popup">
-      <button class="popup-close">&times;</button>
       <h2 class="popup-title">About</h2>
       <div class="popup-content">
         <p>Developer, Creator, Explorer.</p>
