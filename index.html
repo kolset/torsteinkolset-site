@@ -81,7 +81,7 @@
         rgba(0, 0, 0, 0.15) 2px,
         rgba(0, 0, 0, 0.15) 4px
       );
-      z-index: 1000;
+      z-index: 2000;
       animation: scanlines 0.1s infinite linear;
     }
 
@@ -367,6 +367,7 @@
       background: #1a1a1a;
       transform: translateZ(15px);
       box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      border-right: 2px solid #0a0a0a;
     }
 
     .vhs-header {
@@ -453,6 +454,7 @@
     .vhs-back {
       background: #1a1a1a;
       transform: rotateY(180deg) translateZ(15px);
+      border-left: 2px solid #0a0a0a;
     }
 
     .vhs-back .vhs-header {
@@ -509,7 +511,7 @@
       flex-direction: column;
       align-items: center;
       padding: 15px 5px;
-      box-shadow: inset -2px 0 5px rgba(0,0,0,0.1);
+      box-shadow: -2px 0 8px rgba(0,0,0,0.4);
     }
 
     .spine-title {
@@ -546,9 +548,9 @@
       position: absolute;
       width: 30px;
       height: 100%;
-      background: #151515;
+      background: #111;
       transform: rotateY(-90deg) translateZ(15px);
-      box-shadow: inset 2px 0 5px rgba(0,0,0,0.3);
+      box-shadow: 2px 0 8px rgba(0,0,0,0.4);
     }
 
     /* Top */
