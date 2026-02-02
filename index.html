@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torstein Kolset</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000;
+            --white: #fff;
+            --gray: #888;
+            --red: #e63946;
+            --orange: #f4a261;
+            --yellow: #e9c46a;
+            --blue: #3d405b;
+            --cream: #f5f0e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'VT323', monospace;
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Video Background */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 3rem 2rem;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        section:first-of-type {
+            margin-top: 3rem;
+        }
+
+        section h2 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* About */
+        .about p {
+            margin-bottom: 1rem;
+        }
+
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Projects */
+        .project {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .project:first-of-type {
+            padding-top: 0;
+        }
+
+        .project:last-of-type {
+            border-bottom: none;
+        }
+
+        .project-name {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+        }
+
+        .project:hover .project-name {
+            color: var(--gray);
+        }
+
+        .project-type {
+            font-size: 20px;
+            color: var(--gray);
+        }
+
+        /* Contact */
+        .contact-trigger {
+            background: none;
+            border: none;
+            font-family: 'VT323', monospace;
+            font-size: 22px;
+            color: var(--white);
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .contact-trigger:hover {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 0 3rem;
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--red);
+        }
+
+        .vhs-grid {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-end;
+        }
+
+        /* VHS Cover Base */
+        .vhs {
+            background: #1a1a1a;
+            padding: 1.5rem;
+            width: 220px;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .vhs:hover {
+            transform: translateY(-10px);
+        }
+
+        .vhs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .vhs-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            color: var(--red);
+        }
+
+        .vhs-star {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .vhs-subtitle {
+            font-family: 'VT323', monospace;
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .vhs-main {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: var(--red);
+            margin-bottom: auto;
+            line-height: 1.4;
+        }
+
+        .vhs-stripes {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 1rem;
+        }
+
+        .stripe {
+            height: 12px;
+        }
+
+        .stripe-white { background: var(--white); }
+        .stripe-red { background: var(--red); }
+        .stripe-orange { background: var(--orange); }
+        .stripe-blue { background: var(--blue); }
+        .stripe-yellow { background: var(--yellow); }
+
+        .vhs-contact {
+            margin-top: 1.5rem;
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            color: var(--white);
+            word-break: break-all;
+        }
+
+        /* VHS Spine */
+        .vhs-spine {
+            background: var(--cream);
+            width: 40px;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .vhs-spine .spine-title {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'VT323', monospace;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: auto;
+        }
+
+        .vhs-spine .spine-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 6px;
+            border: 1px solid var(--red);
+            padding: 2px 4px;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+        }
+
+        .vhs-spine .spine-stripes {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 0;
+        }
+
+        .vhs-spine .spine-stripes .stripe {
+            height: 8px;
+        }
+
+        /* VHS Variations */
+        .vhs-2 {
+            background: #1a1a1a;
+        }
+
+        .vhs-2 .vhs-stripes {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            height: 80px;
+        }
+
+        .vhs-2 .stripe {
+            height: 100%;
+        }
+
+        .vhs-2 .vhs-side-text {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: rotate(90deg) translateX(-50%);
+            transform-origin: right center;
+            font-family: 'VT323', monospace;
+            font-size: 14px;
+            color: var(--orange);
+            letter-spacing: 3px;
+        }
+
+        .vhs-2 .vhs-big-text {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 20px;
+            color: var(--yellow);
+            margin-top: auto;
+            line-height: 1.2;
+        }
+
+        .vhs-2 .vhs-big-sub {
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .vhs-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .vhs-spine {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                min-height: 60vh;
+            }
+
+            .project {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .vhs {
+                width: 180px;
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="header">
+        <h1>Torstein<br>Kolset</h1>
+    </div>
+
+    <div class="hero">
+        <p class="tagline">Design & Development, Oslo</p>
+    </div>
+
+    <div class="container">
+        <section class="about">
+            <h2>About</h2>
+            <p>I design and build digital products. I care about simplicity, clarity, and making things that work well.</p>
+        </section>
+
+        <section class="projects">
+            <h2>Projects</h2>
+            <a href="https://6pmclub.com" class="project" target="_blank">
+                <span class="project-name">6pm Club</span>
+                <span class="project-type">App</span>
+            </a>
+            <a href="#" class="project">
+                <span class="project-name">Moon Lander</span>
+                <span class="project-type">Game</span>
+            </a>
+            <a href="https://nomadsmap.co" class="project" target="_blank">
+                <span class="project-name">NomadsMap</span>
+                <span class="project-type">Web</span>
+            </a>
+        </section>
+
+        <section class="contact">
+            <h2>Contact</h2>
+            <button class="contact-trigger" id="contactBtn">Get in touch →</button>
+        </section>
+
+        <footer>
+            © 2026
+        </footer>
+    </div>
+
+    <!-- VHS Modal -->
+    <div class="modal" id="contactModal">
+        <span class="modal-close" id="closeBtn">[ CLOSE ]</span>
+        <div class="vhs-grid">
+            <!-- VHS 1 - Email -->
+            <a href="mailto:hello@torsteinkolset.com" class="vhs">
+                <div class="vhs-header">
+                    <span class="vhs-title">E-01</span>
+                    <span class="vhs-star">✦</span>
+                </div>
+                <div class="vhs-subtitle">Direct Message</div>
+                <div class="vhs-subtitle">Playback & Recording</div>
+                <div class="vhs-main">EMAIL<br>CONTACT</div>
+                <div class="vhs-stripes">
+                    <div class="stripe stripe-white"></div>
+                    <div class="stripe stripe-red"></div>
+                    <div class="stripe stripe-orange"></div>
+                    <div class="stripe stripe-blue"></div>
+                    <div class="stripe stripe-yellow"></div>
+                </div>
+                <div class="vhs-contact">hello@<br>torsteinkolset<br>.com</div>
+            </a>
+
+            <!-- VHS Spine -->
+            <div class="vhs-spine">
+                <span class="spine-title">CONTACT</span>
+                <span class="spine-label">VHS</span>
+                <span class="spine-label">HQ</span>
+                <div class="spine-stripes">
+                    <div class="stripe stripe-blue"></div>
+                    <div class="stripe stripe-red"></div>
+                    <div class="stripe stripe-orange"></div>
+                </div>
+            </div>
+
+            <!-- VHS 2 - Twitter -->
+            <a href="https://twitter.com" target="_blank" class="vhs vhs-2">
+                <div class="vhs-header">
+                    <span class="vhs-star">✦</span>
+                </div>
+                <div class="vhs-subtitle">High Quality</div>
+                <div class="vhs-main" style="color: var(--orange);">SOCIAL FEED</div>
+                <div class="vhs-stripes">
+                    <div class="stripe stripe-white"></div>
+                    <div class="stripe stripe-white"></div>
+                    <div class="stripe stripe-red"></div>
+                    <div class="stripe stripe-orange"></div>
+                    <div class="stripe stripe-blue"></div>
+                    <div class="stripe stripe-yellow"></div>
+                </div>
+                <span class="vhs-side-text">FOLLOW</span>
+                <div class="vhs-big-text">X</div>
+                <div class="vhs-big-sub">TWITTER</div>
+            </a>
+
+            <!-- VHS 3 - LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" class="vhs">
+                <div class="vhs-header">
+                    <span class="vhs-title">L-01</span>
+                    <span class="vhs-star">✦</span>
+                </div>
+                <div class="vhs-subtitle">Professional</div>
+                <div class="vhs-subtitle">Network & Connect</div>
+                <div class="vhs-main">LINKED<br>IN</div>
+                <div class="vhs-stripes">
+                    <div class="stripe stripe-blue"></div>
+                    <div class="stripe stripe-white"></div>
+                    <div class="stripe stripe-orange"></div>
+                    <div class="stripe stripe-yellow"></div>
+                    <div class="stripe stripe-red"></div>
+                </div>
+                <div class="vhs-contact" style="color: var(--yellow);">/in/torstein</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('contactModal');
+        const openBtn = document.getElementById('contactBtn');
+        const closeBtn = document.getElementById('closeBtn');
+
+        openBtn.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html>
