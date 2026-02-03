@@ -1541,33 +1541,37 @@
 
       /* Horizontal VHS navigation at bottom */
       .links {
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        gap: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 0;
         margin-right: 0;
         width: 100%;
         padding: 0;
       }
 
       .vhs {
-        height: auto;
+        height: 52px;
         width: auto;
         flex-shrink: 0;
       }
 
       .vhs-img {
-        height: clamp(100px, 18vh, 140px);
-        transform: rotate(0deg);
+        height: 210px;
+        transform: rotate(-90deg);
       }
 
       .vhs-text {
-        display: none;
+        display: block;
+        font-size: 0.7rem;
       }
 
+      .vhs:nth-child(1) .vhs-text { left: -95%; }
+      .vhs:nth-child(2) .vhs-text { left: -105%; }
+      .vhs:nth-child(3) .vhs-text { left: 50%; }
+
       .vhs:hover {
-        transform: translateY(-5px);
+        transform: translateX(-8px);
       }
 
       /* Popup mobile styles */
@@ -1690,11 +1694,15 @@
       }
 
       .vhs-img {
-        height: clamp(80px, 15vh, 110px);
+        height: 180px;
+      }
+
+      .vhs {
+        height: 45px;
       }
 
       .links {
-        gap: 0.3rem;
+        gap: 0;
       }
 
       .vhs-image-content {
