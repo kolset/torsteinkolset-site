@@ -7,7 +7,7 @@
   <meta name="description" content="TJ Kolset - Founder, CTO, Board Member, Angel Investor and Creator. Building 6AM Club, FailForward, NomadsMap and more.">
   <meta name="keywords" content="TJ Kolset, Torstein Kolset, founder, CTO, angel investor, 6AM Club, FailForward, NomadsMap, entrepreneur, Norway">
   <meta name="author" content="TJ Kolset">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#1a1a2e">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://torsteinkolset-site.vercel.app">
 
@@ -58,7 +58,7 @@
     }
 
     body {
-      background: #0a0a0a;
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d2d3f 25%, #1f1f2f 50%, #2a2035 75%, #1a1a2e 100%);
       color: #e0e0e0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       min-height: 100vh;
@@ -83,14 +83,16 @@
       object-fit: cover;
     }
 
-    /* Dark overlay for readability */
+    /* Dark overlay with subtle color gradient for readability */
     .video-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background:
+        linear-gradient(135deg, rgba(40, 30, 60, 0.5) 0%, rgba(20, 20, 35, 0.6) 40%, rgba(30, 25, 50, 0.5) 70%, rgba(45, 30, 55, 0.4) 100%),
+        rgba(0, 0, 0, 0.5);
       z-index: -1;
     }
 
